@@ -1,0 +1,35 @@
+{
+  "name": "easy-dt",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "a chrome extension for working dt easy and happy",
+  "icons" : {
+    "16" : "icon.jpg",
+    "48" : "icon.jpg",
+    "128" : "icon.jpg"
+  },
+  "browser_action": {
+    "default_title": "easy-dt",
+    "default_icon": "icon.jpg",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+		"https://board.faas.ele.me/*",
+		"nativeMessaging"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://board.faas.ele.me/*"
+      ],
+      "js": [
+        "index.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ]
+}

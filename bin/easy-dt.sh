@@ -1,0 +1,1 @@
+osascript easy-dt.scpt

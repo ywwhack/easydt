@@ -1,0 +1,20 @@
+{
+  "name": "easy-dt",
+  "version": "0.0.1",
+  "description": "a chrome extension for working dt easy and happy",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack -w"
+  },
+  "keywords": [
+    "chrome-extension"
+  ],
+  "author": "yww7289@163.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chrome": "0.0.50",
+    "ts-loader": "^3.0.5",
+    "typescript": "^2.5.3",
+    "webpack": "^3.8.1"
+  }
+}
