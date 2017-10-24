@@ -1,9 +1,0 @@
-{
-  "name": "com.ele.easydt",
-  "description": "Chrome Native Messaging API Example Host",
-  "path": "__home__/Library/Application Support/Google/Chrome/NativeMessagingHosts/easydt/easydt.sh",
-  "type": "stdio",
-  "allowed_origins": [
-    "chrome-extension://pjgojeiicbipiinfmohjbcegjbbplgdh/"
-  ]
-}

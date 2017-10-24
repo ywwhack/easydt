@@ -1,5 +1,5 @@
 {
-  "name": "easy-dt",
+  "name": "easydt",
   "version": "0.0.1",
   "manifest_version": 2,
   "description": "a chrome extension for working dt easy and happy",
@@ -9,7 +9,7 @@
     "128" : "icon.jpg"
   },
   "browser_action": {
-    "default_title": "easy-dt",
+    "default_title": "easydt",
     "default_icon": "icon.jpg",
     "default_popup": "popup.html"
   },
