@@ -1,16 +1,16 @@
 {
   "name": "easydt",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifest_version": 2,
   "description": "a chrome extension for working dt easy and happy",
   "icons" : {
-    "16" : "icon.jpg",
-    "48" : "icon.jpg",
-    "128" : "icon.jpg"
+    "16" : "icon16.png",
+    "48" : "icon48.png",
+    "128" : "icon128.png"
   },
   "browser_action": {
     "default_title": "easydt",
-    "default_icon": "icon.jpg",
+    "default_icon": "icon128.png",
     "default_popup": "popup.html"
   },
   "background": {

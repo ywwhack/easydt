@@ -1,6 +1,6 @@
 {
   "name": "easydt",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a chrome extension for working dt easy and happy",
   "main": "index.js",
   "scripts": {
