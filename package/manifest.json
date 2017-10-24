@@ -14,7 +14,8 @@
     "default_popup": "popup.html"
   },
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["background.js"],
+    "persistent": false
   },
   "permissions": [
 		"https://board.faas.ele.me/*",
