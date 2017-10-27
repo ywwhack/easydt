@@ -19,5 +19,13 @@ module.exports = {
         loader: 'ts-loader'
       }
     ]
+  },
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './package',
+    port: 3100,
+    hot: true,
+    open: true,
+    openPage: 'popup.html'
   }
 }
