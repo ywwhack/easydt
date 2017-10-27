@@ -1,21 +1,22 @@
 const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   entry: {
-    index: './src/index.ts',
-    popup: './src/popup.ts'
+    index: './src/content/index.ts',
+    popup: './src/popup/index.tsx'
   },
   output: {
     path: path.resolve(__dirname, 'package'),
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['.js', '.ts']
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         loader: 'ts-loader'
       }
     ]

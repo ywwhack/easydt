@@ -1,3 +1,7 @@
+import * as React from 'react'
+import { render } from 'react-dom'
+import App from './App'
+
 // 再开发模式下，chrome.tabs 不存在
 if (chrome.tabs) {
   chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
@@ -8,3 +12,7 @@ if (chrome.tabs) {
     }
   })  
 }
+
+const root = document.getElementById('app')
+
+render(<App />, root)
