@@ -3,7 +3,7 @@ const path = require('path')
 module.exports = {
   entry: {
     index: './src/index.ts',
-    background: './src/background.ts'
+    popup: './src/popup.ts'
   },
   output: {
     path: path.resolve(__dirname, 'package'),

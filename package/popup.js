@@ -70,13 +70,10 @@
 
 "use strict";
 
-chrome.runtime.onMessage.addListener(message => {
-    if (message === 'open mail') {
-        const port = chrome.runtime.connectNative('com.ele.easydt');
-        port.onDisconnect.addListener(() => {
-            if (chrome.runtime.lastError) {
-                console.log("Failed to connect: " + chrome.runtime.lastError.message);
-            }
+chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+    if (tabs[0].id) {
+        chrome.tabs.sendMessage(tabs[0].id, { type: 'repoNames' }, (response) => {
+            document.body.innerHTML = response.map(repoName => `<div>${repoName}</div>`).join('');
         });
     }
 });

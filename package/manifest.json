@@ -13,13 +13,8 @@
     "default_icon": "icon128.png",
     "default_popup": "popup.html"
   },
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
   "permissions": [
-		"https://board.faas.ele.me/*",
-		"nativeMessaging"
+		"https://board.faas.ele.me/*"
   ],
   "content_scripts": [
     {
