@@ -4,7 +4,7 @@ const webpack = require('webpack')
 module.exports = {
   entry: {
     index: './src/content/index.ts',
-    popup: './src/popup/index.tsx'
+    popup: ['react-hot-loader/patch', './src/popup/index.tsx']
   },
   output: {
     path: path.resolve(__dirname, 'package'),
@@ -17,7 +17,10 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'ts-loader'
+        loaders: [
+          'react-hot-loader/webpack',
+          'awesome-typescript-loader'
+        ]
       }
     ]
   },
