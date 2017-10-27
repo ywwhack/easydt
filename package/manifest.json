@@ -1,6 +1,6 @@
 {
   "name": "easydt",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "manifest_version": 2,
   "description": "a chrome extension for working dt easy and happy",
   "icons" : {
