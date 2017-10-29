@@ -1,5 +1,5 @@
 import * as React from 'react'
-import List from './List'
+import List from './components/List'
 
 const headerStyle = {
   height: '44px',
