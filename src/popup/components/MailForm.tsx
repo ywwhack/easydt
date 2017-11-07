@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { IMailOption } from '../types'
+import { IMailOption } from '@/share/types'
 
 interface IMailOptionProps extends IMailOption {
   onRecepientChange: (recepient: string) => void

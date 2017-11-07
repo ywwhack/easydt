@@ -1,4 +1,4 @@
-import { IMailOption } from '../types'
+import { IMailOption } from '@/share/types'
 
 export default {
   getItem (projectName: string): IMailOption {

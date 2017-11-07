@@ -1,7 +1,7 @@
 import * as React from 'react'
 import MailForm from './MailForm'
-import { IMailOption } from '../types'
-import mailOptionStorage from '../utils/mailOptionStorage'
+import { IMailOption } from '@/share/types'
+import mailOptionStorage from '@/share/mailOptionStorage'
 
 interface IListItemProps {
   name: string

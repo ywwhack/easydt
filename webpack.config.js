@@ -16,7 +16,10 @@ module.exports = {
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['.js', '.ts', '.tsx']
+    extensions: ['.js', '.ts', '.tsx'],
+    alias: {
+      '@': resolve('src')
+    }
   },
   module: {
     rules: [

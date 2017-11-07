@@ -1,4 +1,4 @@
-import { IMailOption } from '../popup/types'
+import { IMailOption } from '@/share/types'
 
 function delay (time: number): Promise<void> {
   return new Promise(resolve => {
