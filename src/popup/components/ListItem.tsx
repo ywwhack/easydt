@@ -32,8 +32,8 @@ export default class ListItem extends React.Component<IListItemProps, IListItemS
   handleCopyChange = (copy: string) => {
     this.setState({ copy })
   }
-  handleSummaryChange = (summary: string) => {
-    this.setState({ summary })
+  handlesubjectChange = (subject: string) => {
+    this.setState({ subject })
   }
   handleUpdateClick = () => {
     const { showForm, ...mailOption } = this.state
@@ -51,7 +51,7 @@ export default class ListItem extends React.Component<IListItemProps, IListItemS
           <MailForm {...mailOption}
             onRecepientChange={this.handleRecepientChange}
             onCopyChange={this.handleCopyChange}
-            onSummaryChange={this.handleSummaryChange}
+            onsubjectChange={this.handlesubjectChange}
             onUpdateClick={this.handleUpdateClick} />
         }
       </li>

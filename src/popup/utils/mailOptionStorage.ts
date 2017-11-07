@@ -6,7 +6,7 @@ export default {
     if (result = localStorage.getItem(projectName)) {
       return JSON.parse(result)
     } else {
-      return { recepient: '', copy: '', summary: '' }
+      return { recepient: '', copy: '', subject: '' }
     }
   },
   setItem (projectName: string, mailOption: IMailOption) {

@@ -1,7 +1,13 @@
+import { IMailOption } from '../popup/types'
+
 function delay (time: number): Promise<void> {
   return new Promise(resolve => {
     setTimeout(() => resolve(), time)
   })
+}
+
+function convertMailOptionToUrl (mailOption: IMailOption): string {
+  return `mailto:${mailOption.recepient}?cc=${mailOption.copy}&subject=${mailOption.subject}`
 }
 
 async function main () {
@@ -19,8 +25,13 @@ async function main () {
   deployBtn.addEventListener('click', () => {
     console.log('deploy click')
 
-    fakeLinkDom.href = "mailto:"
-    fakeLinkDom.click()
+    // 发送 projectName 给 extension，获取对应的邮件模板
+    const activeProject = document.getElementsByClassName('p-repo p-sidebar__repo router-link-exact-active is-active')[0]
+    const projectName = activeProject.getElementsByClassName('p-repo__title')[0].innerHTML
+    chrome.runtime.sendMessage({ type: 'projectConfig', name: projectName }, response => {
+      fakeLinkDom.href = convertMailOptionToUrl(response)
+      fakeLinkDom.click()
+    })
   })
 
   // 获取所有仓库名称

@@ -4,6 +4,7 @@ const webpack = require('webpack')
 module.exports = {
   entry: {
     index: './src/content/index.ts',
+    background: './src/background/index.ts',
     popup: ['react-hot-loader/patch', './src/popup/index.tsx']
   },
   output: {
