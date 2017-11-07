@@ -1,6 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
 
+function resolve (to) {
+  return path.resolve(__dirname, to)
+}
+
 module.exports = {
   entry: {
     index: './src/content/index.ts',
@@ -12,12 +16,22 @@ module.exports = {
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx']
+    extensions: ['.js', '.ts', '.tsx']
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
+        include: resolve('src'),
+        loader: 'tslint-loader',
+        enforce: 'pre',
+        options: {
+          typeCheck: true
+        }
+      },
+      {
+        test: /\.tsx?$/,
+        include: resolve('src'),
         loaders: [
           'react-hot-loader/webpack',
           'awesome-typescript-loader'

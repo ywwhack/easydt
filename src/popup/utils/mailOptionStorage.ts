@@ -2,8 +2,8 @@ import { IMailOption } from '../types'
 
 export default {
   getItem (projectName: string): IMailOption {
-    let result
-    if (result = localStorage.getItem(projectName)) {
+    const result = localStorage.getItem(projectName)
+    if (result) {
       return JSON.parse(result)
     } else {
       return { recepient: '', copy: '', subject: '' }

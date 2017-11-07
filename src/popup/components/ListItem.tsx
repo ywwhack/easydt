@@ -47,7 +47,7 @@ export default class ListItem extends React.Component<IListItemProps, IListItemS
       <li style={liStyle}>
         <p onClick={this.handleNameClick}>{ name }</p>
         {
-          showForm && 
+          showForm &&
           <MailForm {...mailOption}
             onRecepientChange={this.handleRecepientChange}
             onCopyChange={this.handleCopyChange}

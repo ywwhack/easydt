@@ -8,10 +8,10 @@ interface IMailOptionProps extends IMailOption {
   onUpdateClick: () => void
 }
 
- const MailForm: React.SFC<IMailOptionProps> = ({ 
-   recepient, copy, subject,
-   onRecepientChange, onCopyChange, onsubjectChange, onUpdateClick
-  }) => {
+const MailForm: React.SFC<IMailOptionProps> = ({
+  recepient, copy, subject,
+  onRecepientChange, onCopyChange, onsubjectChange, onUpdateClick
+}) => {
   return (
     <div>
       <div>

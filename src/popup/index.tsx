@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render } from 'react-dom'
-import { AppContainer } from "react-hot-loader"
+import { AppContainer } from 'react-hot-loader'
 import App from './App'
 
 const root = document.getElementById('app')
@@ -14,8 +14,8 @@ render(
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept("./App", () => {
-    const NextApp = require<{default: typeof App}>("./App").default
+  module.hot.accept('./App', () => {
+    const NextApp = require<{default: typeof App}>('./App').default
     render(
       <AppContainer>
         <NextApp />
