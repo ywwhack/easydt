@@ -26,7 +26,7 @@ async function main () {
     console.log('deploy click')
 
     // 发送 projectName 给 extension，获取对应的邮件模板
-    const activeProject = document.getElementsByClassName('p-repo p-sidebar__repo router-link-exact-active is-active')[0]
+    const activeProject = document.getElementsByClassName('p-repo p-sidebar__repo is-active')[0]
     const projectName = activeProject.getElementsByClassName('p-repo__title')[0].innerHTML
     chrome.runtime.sendMessage({ type: 'projectConfig', name: projectName }, response => {
       fakeLinkDom.href = convertMailOptionToUrl(response)
