@@ -15,19 +15,24 @@ const MailForm: React.SFC<IMailOptionProps> = ({
 }) => {
   return (
     <div className='mail-form-component'>
-      <div>
-        <span>收件人：</span>
-        <input value={recepient} onChange={e => onRecepientChange(e.target.value)} />
+      <div className='form-item'>
+        <span className='label'>收件人：</span>
+        <input className='input' placeholder='请输入收件人邮箱，多个邮件地址以「,」分割'
+          value={recepient} onChange={e => onRecepientChange(e.target.value)} />
       </div>
-      <div>
-        <span>抄送：</span>
-        <input value={copy} onChange={e => onCopyChange(e.target.value)} />
+      <div className='form-item'>
+        <span className='label'>抄送：</span>
+        <input className='input' placeholder='请输入抄送人邮箱，多个邮件地址以「,」分割'
+          value={copy} onChange={e => onCopyChange(e.target.value)} />
       </div>
-      <div>
-        <span>主题：</span>
-        <input value={subject} onChange={e => onsubjectChange(e.target.value)} />
+      <div className='form-item'>
+        <span className='label'>主题：</span>
+        <input className='input' placeholder='请输入主题内容'
+          value={subject} onChange={e => onsubjectChange(e.target.value)} />
       </div>
-      <button onClick={onUpdateClick}>更新</button>
+      <div className='btn-wrapper'>
+        <button className='btn' onClick={onUpdateClick}>更新</button>
+      </div>
     </div>
   )
 }

@@ -2,6 +2,7 @@ import * as React from 'react'
 import MailForm from '../MailForm/index'
 import { IMailOption } from '@/share/types'
 import mailOptionStorage from '@/share/mailOptionStorage'
+import './index.scss'
 
 interface IListItemProps {
   name: string
@@ -9,12 +10,6 @@ interface IListItemProps {
 
 interface IListItemState extends IMailOption {
   showForm: boolean
-}
-
-const liStyle = {
-  padding: '8px',
-  borderBottom: '1px solid #ddd',
-  cursor: 'pointer'
 }
 
 export default class ListItem extends React.Component<IListItemProps, IListItemState> {
@@ -44,8 +39,8 @@ export default class ListItem extends React.Component<IListItemProps, IListItemS
     const { name } = this.props
     const { showForm, ...mailOption } = this.state
     return (
-      <li style={liStyle}>
-        <p onClick={this.handleNameClick}>{ name }</p>
+      <li className='list-item-component'>
+        <p className='title' onClick={this.handleNameClick}>{ name }</p>
         {
           showForm &&
           <MailForm {...mailOption}

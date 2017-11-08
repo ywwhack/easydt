@@ -1,0 +1,9 @@
+.list-item-component {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+
+  .title {
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
