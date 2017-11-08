@@ -3,7 +3,17 @@
   border-bottom: 1px solid #ddd;
 
   .title {
+    display: flex;
+    align-items: center;
     font-weight: bold;
     cursor: pointer;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    margin-left: 4px;
+    border-radius: 50%;
+    background: #000;
   }
 }

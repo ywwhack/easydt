@@ -31,7 +31,7 @@ const MailForm: React.SFC<IMailOptionProps> = ({
           value={subject} onChange={e => onsubjectChange(e.target.value)} />
       </div>
       <div className='btn-wrapper'>
-        <button className='btn' onClick={onUpdateClick}>更新</button>
+        <button className='btn' onClick={onUpdateClick}>保存</button>
       </div>
     </div>
   )

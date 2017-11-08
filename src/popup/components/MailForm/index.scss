@@ -28,6 +28,7 @@
   }
 
   .btn {
+    position: relative;
     display: inline-block;
     padding: 6px 16px;
     border: 1px solid #cfd1d6;
@@ -42,6 +43,11 @@
       border-color: #878d99;
       background: #878d99;
       color: #fff;
+    }
+
+    &:active {
+      border-color: #7A7F89;
+      background: #7A7F89;
     }
   }
 }
