@@ -1,5 +1,5 @@
 import * as React from 'react'
-import List from './components/List'
+import List from '@/popup/components/List/index'
 
 interface AppState {
   names: string[]

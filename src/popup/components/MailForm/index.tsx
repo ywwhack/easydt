@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { IMailOption } from '@/share/types'
+import './index.scss'
 
 interface IMailOptionProps extends IMailOption {
   onRecepientChange: (recepient: string) => void
@@ -13,7 +14,7 @@ const MailForm: React.SFC<IMailOptionProps> = ({
   onRecepientChange, onCopyChange, onsubjectChange, onUpdateClick
 }) => {
   return (
-    <div>
+    <div className='mail-form-component'>
       <div>
         <span>收件人：</span>
         <input value={recepient} onChange={e => onRecepientChange(e.target.value)} />

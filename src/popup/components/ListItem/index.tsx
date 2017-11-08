@@ -1,5 +1,5 @@
 import * as React from 'react'
-import MailForm from './MailForm'
+import MailForm from '../MailForm/index'
 import { IMailOption } from '@/share/types'
 import mailOptionStorage from '@/share/mailOptionStorage'
 

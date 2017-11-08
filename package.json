@@ -4,8 +4,8 @@
   "description": "a chrome extension for working dt easy and happy",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot",
     "dev": "webpack -w",
+    "dev:popup": "webpack-dev-server --hot",
     "build": "webpack"
   },
   "keywords": [
@@ -21,7 +21,11 @@
     "@types/react-hot-loader": "^3.0.5",
     "@types/webpack-env": "^1.13.2",
     "awesome-typescript-loader": "^3.2.3",
+    "css-loader": "^0.28.7",
+    "node-sass": "^4.6.0",
     "react-hot-loader": "^3.1.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
     "ts-loader": "^3.0.5",
     "tslint": "^5.8.0",
     "tslint-config-standard": "^7.0.0",

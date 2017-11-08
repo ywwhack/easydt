@@ -1,5 +1,5 @@
 import * as React from 'react'
-import ListItem from './ListItem'
+import ListItem from '../ListItem/index'
 
 interface IListProps {
   names: string[]

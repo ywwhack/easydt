@@ -39,6 +39,21 @@ module.exports = {
           'react-hot-loader/webpack',
           'awesome-typescript-loader'
         ]
+      },
+      {
+        test: /\.css$/,
+        loaders: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.scss$/,
+        loaders: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       }
     ]
   },
