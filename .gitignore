@@ -3,3 +3,4 @@ node_modules/
 npm-debug.log*
 *.zip
 package/*.js
+package/popup.html

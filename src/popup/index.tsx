@@ -3,6 +3,8 @@ import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import App from './App'
 
+import './styles/gloabl.css'
+
 const root = document.getElementById('app')
 
 render(

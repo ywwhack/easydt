@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 function resolve (to) {
   return path.resolve(__dirname, to)
@@ -64,5 +65,12 @@ module.exports = {
     hot: true,
     open: true,
     openPage: 'popup.html'
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'popup.html',
+      template: resolve('src/popup/index.html'),
+      inject: false
+    })
+  ]
 }
