@@ -11,6 +11,23 @@ function convertMailOptionToUrl (mailOption: IMailOption): string {
 }
 
 async function main () {
+  // 获取所有仓库名称
+  let repoLinks: HTMLCollectionOf<Element>
+  do {
+    await delay(100)
+    repoLinks = document.getElementsByClassName('p-repo p-sidebar__repo')
+  } while (!repoLinks.length)
+
+  const repoNames = Array.from(repoLinks).map(element => {
+    return element.getElementsByClassName('p-repo__title')[0].innerHTML
+  })
+
+  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.type === 'repoNames') {
+      sendResponse(repoNames)
+    }
+  })
+
   // 获取「发布到生产」的按钮
   let deployBtnContainer: Element
   do {
@@ -23,8 +40,6 @@ async function main () {
 
   // 注册事件
   deployBtn.addEventListener('click', () => {
-    console.log('deploy click')
-
     // 发送 projectName 给 extension，获取对应的邮件模板
     const activeProject = document.getElementsByClassName('p-repo p-sidebar__repo is-active')[0]
     const projectName = activeProject.getElementsByClassName('p-repo__title')[0].innerHTML
@@ -32,18 +47,6 @@ async function main () {
       fakeLinkDom.href = convertMailOptionToUrl(response)
       fakeLinkDom.click()
     })
-  })
-
-  // 获取所有仓库名称
-  let repoLinks = document.getElementsByClassName('p-repo p-sidebar__repo')
-  const repoNames = Array.from(repoLinks).map(element => {
-    return element.getElementsByClassName('p-repo__title')[0].innerHTML
-  })
-
-  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === 'repoNames') {
-      sendResponse(repoNames)
-    }
   })
 }
 
