@@ -1,4 +1,6 @@
 import * as React from 'react'
+import { observable } from 'mobx'
+import { observer } from 'mobx-react'
 import ListItem from '../ListItem/index'
 import { IMailOption } from '@/share/types'
 import mailOptionStorage from '@/share/mailOptionStorage'
@@ -12,14 +14,13 @@ interface EditingMap {
   [x: string]: boolean
 }
 
-interface IListState {
-  editingMap: EditingMap
+class ListState {
+  @observable editingMap: EditingMap = {}
 }
 
-export default class List extends React.Component<IListProps, IListState> {
-  state = {
-    editingMap: {} as EditingMap
-  }
+@observer
+export default class List extends React.Component<IListProps, {}> {
+  store = new ListState()
 
   initEditingMapForNames = (names: string[]): EditingMap => {
     return names.reduce((result: EditingMap, name) => {
@@ -30,18 +31,16 @@ export default class List extends React.Component<IListProps, IListState> {
   listenerForSaveEvent = (event: KeyboardEvent) => {
     if (event.metaKey && event.which === 83) {
       event.preventDefault()
-      this.setState({ editingMap: this.initEditingMapForNames(this.props.names) })
+      this.store.editingMap = this.initEditingMapForNames(this.props.names)
     }
   }
   handleEditing = (nextMailOption: IMailOption, name: string) => {
-    const nextEditingMap = { ...this.state.editingMap }
-    nextEditingMap[name] = !isEqual(nextMailOption, mailOptionStorage.getItem(name))
-    this.setState({ editingMap: nextEditingMap })
+    this.store.editingMap[name] = !isEqual(nextMailOption, mailOptionStorage.getItem(name))
   }
 
   componentWillReceiveProps (nextProps: IListProps) {
     if (this.props.names.join(',') !== nextProps.names.join(',')) {
-      this.setState({ editingMap: this.initEditingMapForNames(nextProps.names) })
+      this.store.editingMap = this.initEditingMapForNames(nextProps.names)
     }
   }
   componentDidMount () {
@@ -58,7 +57,7 @@ export default class List extends React.Component<IListProps, IListState> {
         {names.map(
           name => (
             <ListItem key={name} name={name}
-              editing={this.state.editingMap[name]}
+              editing={this.store.editingMap[name]}
               onEditing={(mailOption: IMailOption) => this.handleEditing(mailOption, name)}>
             </ListItem>
           )

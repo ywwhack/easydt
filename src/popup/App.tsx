@@ -1,4 +1,6 @@
 import * as React from 'react'
+import { observable } from 'mobx'
+import { observer } from 'mobx-react'
 import List from '@/popup/components/List/index'
 
 interface AppState {
@@ -14,10 +16,13 @@ const headerStyle = {
   fontSize: '18px'
 }
 
-export default class App extends React.Component<{}, AppState> {
-  state = {
-    names: []
-  }
+class AppState {
+  @observable names: string[] = []
+}
+
+@observer
+export default class App extends React.Component<{}, {}> {
+  store = new AppState()
 
   componentDidMount () {
     // 在开发模式下，chrome.tabs 不存在
@@ -25,12 +30,12 @@ export default class App extends React.Component<{}, AppState> {
       chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
         if (tabs[0].id) {
           chrome.tabs.sendMessage(tabs[0].id as number, { type: 'repoNames' }, (names: string[]) => {
-            this.setState({ names })
+            this.store.names = names
           })
         }
       })
     } else {
-      this.setState({ names: ['cbt', 'cbt-internal'] })
+      this.store.names = ['cbt', 'cbt-internal']
     }
   }
 
@@ -38,7 +43,7 @@ export default class App extends React.Component<{}, AppState> {
     return (
       <div>
         <h1 style={headerStyle}>Settings</h1>
-        <List names={this.state.names}></List>
+        <List names={this.store.names}></List>
       </div>
     )
   }

@@ -32,7 +32,7 @@
     "tslint": "^5.8.0",
     "tslint-config-standard": "^7.0.0",
     "tslint-loader": "^3.5.3",
-    "typescript": "^2.5.3",
+    "typescript": "^2.6.1",
     "webpack": "^3.8.1",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.3",
@@ -40,6 +40,8 @@
   },
   "dependencies": {
     "lodash-es": "^4.17.4",
+    "mobx": "^3.3.1",
+    "mobx-react": "^4.3.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   }
