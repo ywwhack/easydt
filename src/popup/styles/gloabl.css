@@ -11,3 +11,7 @@ body {
   overflow-y: auto;
   font-size: 14px;
 }
+
+li {
+  list-style: none;
+}

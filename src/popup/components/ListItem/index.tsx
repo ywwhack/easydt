@@ -10,40 +10,53 @@ interface IListItemProps {
   onEditingChange: Function
 }
 
-interface IListItemState extends IMailOption {
+interface IListItemState {
   showForm: boolean
+  mailOption: IMailOption
 }
 
 export default class ListItem extends React.Component<IListItemProps, IListItemState> {
   state = {
     showForm: false,
-    ...mailOptionStorage.getItem(this.props.name)
+    mailOption: mailOptionStorage.getItem(this.props.name)
   }
 
   handleNameClick = () => {
     this.setState({ showForm: !this.state.showForm })
   }
   handleRecepientChange = (recepient: string) => {
-    this.setState({ recepient })
+    const oldMailOption = { ...this.state.mailOption }
+    oldMailOption.recepient = recepient
+    this.setState({ mailOption: oldMailOption })
     this.props.onEditingChange(true)
   }
   handleCopyChange = (copy: string) => {
-    this.setState({ copy })
+    const oldMailOption = { ...this.state.mailOption }
+    oldMailOption.copy = copy
+    this.setState({ mailOption: oldMailOption })
     this.props.onEditingChange(true)
   }
   handlesubjectChange = (subject: string) => {
-    this.setState({ subject })
+    const oldMailOption = { ...this.state.mailOption }
+    oldMailOption.subject = subject
+    this.setState({ mailOption: oldMailOption })
     this.props.onEditingChange(true)
   }
   handleUpdateClick = () => {
-    const { showForm, ...mailOption } = this.state
+    const { mailOption } = this.state
     this.props.onEditingChange(false)
     mailOptionStorage.setItem(this.props.name, mailOption)
   }
 
+  componentWillReceiveProps (nextProps: IListItemProps) {
+    if (nextProps.editing !== this.props.editing) {
+      mailOptionStorage.setItem(this.props.name, this.state.mailOption)
+    }
+  }
+
   render () {
     const { name, editing } = this.props
-    const { showForm, ...mailOption } = this.state
+    const { showForm, mailOption } = this.state
     return (
       <li className='list-item-component'>
         <p className='title' onClick={this.handleNameClick}>

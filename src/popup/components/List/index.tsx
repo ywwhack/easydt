@@ -18,18 +18,36 @@ export default class List extends React.Component<IListProps, IListState> {
     editingMap: {} as EditingMap
   }
 
+  initEditingMapForNames = (names: string[]): EditingMap => {
+    return names.reduce((result: EditingMap, name) => {
+      result[name] = false
+      return result
+    }, {})
+  }
+  listenerForSaveEvent = (event: KeyboardEvent) => {
+    if (event.metaKey && event.which === 83) {
+      event.preventDefault()
+      this.setState({ editingMap: this.initEditingMapForNames(this.props.names) })
+    }
+  }
   handleEditingChange = (edting: boolean, name: string) => {
     const { editingMap } = this.state
     editingMap[name] = edting
     this.setState({ editingMap })
   }
+
   componentWillReceiveProps (nextProps: IListProps) {
-    const editingMap = nextProps.names.reduce((result: EditingMap, name) => {
-      result[name] = false
-      return result
-    }, {})
-    this.setState({ editingMap })
+    if (this.props.names.join(',') !== nextProps.names.join(',')) {
+      this.setState({ editingMap: this.initEditingMapForNames(nextProps.names) })
+    }
   }
+  componentDidMount () {
+    window.addEventListener('keydown', this.listenerForSaveEvent)
+  }
+  componentWillUnmount () {
+    window.removeEventListener('keydown', this.listenerForSaveEvent)
+  }
+
   render () {
     const { names } = this.props
     return (
