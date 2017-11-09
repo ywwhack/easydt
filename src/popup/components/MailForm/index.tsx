@@ -5,13 +5,13 @@ import './index.scss'
 interface IMailOptionProps extends IMailOption {
   onRecepientChange: (recepient: string) => void
   onCopyChange: (copy: string) => void
-  onsubjectChange: (subject: string) => void
+  onSubjectChange: (subject: string) => void
   onUpdateClick: () => void
 }
 
 const MailForm: React.SFC<IMailOptionProps> = ({
   recepient, copy, subject,
-  onRecepientChange, onCopyChange, onsubjectChange, onUpdateClick
+  onRecepientChange, onCopyChange, onSubjectChange, onUpdateClick
 }) => {
   return (
     <div className='mail-form-component'>
@@ -28,7 +28,7 @@ const MailForm: React.SFC<IMailOptionProps> = ({
       <div className='form-item'>
         <span className='label'>主题：</span>
         <input className='input' placeholder='请输入主题内容'
-          value={subject} onChange={e => onsubjectChange(e.target.value)} />
+          value={subject} onChange={e => onSubjectChange(e.target.value)} />
       </div>
       <div className='btn-wrapper'>
         <button className='btn' onClick={onUpdateClick}>保存</button>

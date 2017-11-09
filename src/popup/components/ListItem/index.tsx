@@ -36,7 +36,7 @@ export default class ListItem extends React.Component<IListItemProps, IListItemS
     this.setState({ mailOption: nextMailOption })
     this.props.onEditing(nextMailOption)
   }
-  handlesubjectChange = (subject: string) => {
+  handleSubjectChange = (subject: string) => {
     const nextMailOption = { ...this.state.mailOption }
     nextMailOption.subject = subject
     this.setState({ mailOption: nextMailOption })
@@ -68,7 +68,7 @@ export default class ListItem extends React.Component<IListItemProps, IListItemS
           <MailForm {...mailOption}
             onRecepientChange={this.handleRecepientChange}
             onCopyChange={this.handleCopyChange}
-            onsubjectChange={this.handlesubjectChange}
+            onSubjectChange={this.handleSubjectChange}
             onUpdateClick={this.handleUpdateClick} />
         }
       </li>
