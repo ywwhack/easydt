@@ -1,5 +1,8 @@
 import * as React from 'react'
 import ListItem from '../ListItem/index'
+import { IMailOption } from '@/share/types'
+import mailOptionStorage from '@/share/mailOptionStorage'
+import isEqual from 'lodash/isEqual'
 
 interface IListProps {
   names: string[]
@@ -30,10 +33,10 @@ export default class List extends React.Component<IListProps, IListState> {
       this.setState({ editingMap: this.initEditingMapForNames(this.props.names) })
     }
   }
-  handleEditingChange = (edting: boolean, name: string) => {
-    const { editingMap } = this.state
-    editingMap[name] = edting
-    this.setState({ editingMap })
+  handleEditing = (nextMailOption: IMailOption, name: string) => {
+    const nextEditingMap = { ...this.state.editingMap }
+    nextEditingMap[name] = !isEqual(nextMailOption, mailOptionStorage.getItem(name))
+    this.setState({ editingMap: nextEditingMap })
   }
 
   componentWillReceiveProps (nextProps: IListProps) {
@@ -56,7 +59,7 @@ export default class List extends React.Component<IListProps, IListState> {
           name => (
             <ListItem key={name} name={name}
               editing={this.state.editingMap[name]}
-              onEditingChange={(editing: boolean) => this.handleEditingChange(editing, name)}>
+              onEditing={(mailOption: IMailOption) => this.handleEditing(mailOption, name)}>
             </ListItem>
           )
         )}

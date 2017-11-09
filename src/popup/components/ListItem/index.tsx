@@ -7,7 +7,7 @@ import './index.scss'
 interface IListItemProps {
   name: string
   editing: boolean
-  onEditingChange: Function
+  onEditing: Function
 }
 
 interface IListItemState {
@@ -25,31 +25,31 @@ export default class ListItem extends React.Component<IListItemProps, IListItemS
     this.setState({ showForm: !this.state.showForm })
   }
   handleRecepientChange = (recepient: string) => {
-    const oldMailOption = { ...this.state.mailOption }
-    oldMailOption.recepient = recepient
-    this.setState({ mailOption: oldMailOption })
-    this.props.onEditingChange(true)
+    const nextMailOption = { ...this.state.mailOption }
+    nextMailOption.recepient = recepient
+    this.setState({ mailOption: nextMailOption })
+    this.props.onEditing(nextMailOption)
   }
   handleCopyChange = (copy: string) => {
-    const oldMailOption = { ...this.state.mailOption }
-    oldMailOption.copy = copy
-    this.setState({ mailOption: oldMailOption })
-    this.props.onEditingChange(true)
+    const nextMailOption = { ...this.state.mailOption }
+    nextMailOption.copy = copy
+    this.setState({ mailOption: nextMailOption })
+    this.props.onEditing(nextMailOption)
   }
   handlesubjectChange = (subject: string) => {
-    const oldMailOption = { ...this.state.mailOption }
-    oldMailOption.subject = subject
-    this.setState({ mailOption: oldMailOption })
-    this.props.onEditingChange(true)
+    const nextMailOption = { ...this.state.mailOption }
+    nextMailOption.subject = subject
+    this.setState({ mailOption: nextMailOption })
+    this.props.onEditing(nextMailOption)
   }
   handleUpdateClick = () => {
     const { mailOption } = this.state
-    this.props.onEditingChange(false)
     mailOptionStorage.setItem(this.props.name, mailOption)
+    this.props.onEditing(mailOption)
   }
 
-  componentWillReceiveProps (nextProps: IListItemProps) {
-    if (nextProps.editing !== this.props.editing) {
+  componentDidUpdate () {
+    if (!this.props.editing) {
       mailOptionStorage.setItem(this.props.name, this.state.mailOption)
     }
   }
