@@ -2,6 +2,6 @@
 node_modules/
 npm-debug.log*
 *.zip
-package/*.js
-package/*.map
-package/popup.html
+chrome/*.js
+chrome/*.map
+chrome/popup.html

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack -w --config webpack.dev.conf.js",
     "dev:popup": "webpack-dev-server --hot --config webpack.dev.conf.js",
-    "build": "webpack --config webpack.prod.conf.js && zip -q  -r easydt.zip package"
+    "build": "webpack --config webpack.prod.conf.js && zip -q  -r easydt.zip chrome"
   },
   "keywords": [
     "chrome-extension"

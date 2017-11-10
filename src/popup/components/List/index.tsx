@@ -2,7 +2,7 @@ import * as React from 'react'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import ListItem from '../ListItem/index'
-import { IMailOption } from '@/share/types'
+import { IMailOption, IObject } from '@/share/types'
 import mailOptionStorage from '@/share/mailOptionStorage'
 import isEqual from 'lodash/isEqual'
 
@@ -10,9 +10,7 @@ interface IListProps {
   names: string[]
 }
 
-interface EditingMap {
-  [x: string]: boolean
-}
+interface EditingMap extends IObject<boolean> {}
 
 class ListState {
   @observable editingMap: EditingMap = {}

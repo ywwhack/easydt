@@ -3,8 +3,9 @@ import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import MailForm from '../MailForm/index'
 import Switch from '../Switch/index'
-import { IMailOption } from '@/share/types'
+import { IMailOption, IActiveMap } from '@/share/types'
 import mailOptionStorage from '@/share/mailOptionStorage'
+import storage, { STORAGE_ACITVE_MAP } from '@/share/storage'
 import './index.scss'
 
 interface IListItemProps {
@@ -15,11 +16,12 @@ interface IListItemProps {
 
 class ListItemState {
   @observable showForm = false
-  @observable active = true
+  @observable active: boolean
   @observable mailOption: IMailOption
 
   constructor (name: string) {
     this.mailOption = mailOptionStorage.getItem(name)
+    this.active = (storage.getItem(STORAGE_ACITVE_MAP) as IActiveMap)[name]
   }
 }
 
@@ -32,6 +34,10 @@ export default class ListItem extends React.Component<IListItemProps, {}> {
   }
   handleSwitchChange = (value: boolean) => {
     this.store.active = value
+    // 更新 localStorage
+    const nextActiveMap: IActiveMap = storage.getItem(STORAGE_ACITVE_MAP)
+    nextActiveMap[this.props.name] = value
+    storage.setItem(STORAGE_ACITVE_MAP, nextActiveMap)
   }
   handleRecepientChange = (recepient: string) => {
     const { mailOption } = this.store

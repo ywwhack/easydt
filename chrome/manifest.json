@@ -1,6 +1,6 @@
 {
   "name": "easydt",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "manifest_version": 2,
   "description": "一款每周让你多续 1min 的 chrome 插件",
   "icons" : {

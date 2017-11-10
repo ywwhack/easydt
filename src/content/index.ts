@@ -44,8 +44,10 @@ async function main () {
     const activeProject = document.getElementsByClassName('p-repo p-sidebar__repo is-active')[0]
     const projectName = activeProject.getElementsByClassName('p-repo__title')[0].innerHTML
     chrome.runtime.sendMessage({ type: 'projectConfig', name: projectName }, response => {
-      fakeLinkDom.href = convertMailOptionToUrl(response)
-      fakeLinkDom.click()
+      if (response) {
+        fakeLinkDom.href = convertMailOptionToUrl(response)
+        fakeLinkDom.click()
+      }
     })
   })
 }

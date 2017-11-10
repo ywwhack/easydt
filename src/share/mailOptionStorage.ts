@@ -1,15 +1,16 @@
+import storage from '@/share/storage'
 import { IMailOption } from '@/share/types'
 
 export default {
   getItem (projectName: string): IMailOption {
-    const result = localStorage.getItem(projectName)
+    const result = storage.getItem(projectName)
     if (result) {
-      return JSON.parse(result)
+      return result
     } else {
       return { recepient: '', copy: '', subject: '' }
     }
   },
-  setItem (projectName: string, mailOption: IMailOption) {
-    localStorage.setItem(projectName, JSON.stringify(mailOption))
+  setItem (projectName: string, mailOption: IMailOption): boolean {
+    return storage.setItem(projectName, mailOption)
   }
 }
