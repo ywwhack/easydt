@@ -2,6 +2,7 @@ import * as React from 'react'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import MailForm from '../MailForm/index'
+import Switch from '../Switch/index'
 import { IMailOption } from '@/share/types'
 import mailOptionStorage from '@/share/mailOptionStorage'
 import './index.scss'
@@ -14,6 +15,7 @@ interface IListItemProps {
 
 class ListItemState {
   @observable showForm = false
+  @observable active = true
   @observable mailOption: IMailOption
 
   constructor (name: string) {
@@ -27,6 +29,9 @@ export default class ListItem extends React.Component<IListItemProps, {}> {
 
   handleNameClick = () => {
     this.store.showForm = !this.store.showForm
+  }
+  handleSwitchChange = (value: boolean) => {
+    this.store.active = value
   }
   handleRecepientChange = (recepient: string) => {
     const { mailOption } = this.store
@@ -60,10 +65,13 @@ export default class ListItem extends React.Component<IListItemProps, {}> {
     const { showForm, mailOption } = this.store
     return (
       <li className='list-item-component'>
-        <p className='title' onClick={this.handleNameClick}>
-          { name }
-          { editing && <span className='dot'></span> }
-        </p>
+        <div className='title' onClick={this.handleNameClick}>
+          <span>
+            { name }
+            { editing && <span className='dot'></span> }
+          </span>
+          <Switch value={this.store.active} onChange={this.handleSwitchChange} />
+        </div>
         {
           showForm &&
           <MailForm {...mailOption}
