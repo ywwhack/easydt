@@ -12,7 +12,7 @@ module.exports = {
     background: './src/background/index.ts'
   },
   output: {
-    path: path.resolve(__dirname, 'package'),
+    path: path.resolve(__dirname, 'chrome'),
     filename: '[name].js'
   },
   resolve: {
